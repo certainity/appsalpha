@@ -1,14 +1,7 @@
 import streamlit as st
-import pandas as pd #if you will
-import gspread
-from google.oauth2 import service_account
+import pandas as pd
 
-# Create a connection object.
-credentials = service_account.Credentials.from_service_account_info(
-    st.secrets["gcp_service_account"],
-    scopes=[
-        "https://www.googleapis.com/auth/spreadsheets","https://www.googleapis.com/auth/drive"
-    ],
-)
-conn = connect(credentials=credentials)
-client=gspread.authorize(credentials)
+# Dump any DataFrame
+d = {'Type': ['Notebook', 'DVDs'], 'Quantity': [1, 2], 'Price': [400, 200]}
+df = pd.DataFrame(data=d)
+st.dataframe(df)
